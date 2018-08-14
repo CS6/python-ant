@@ -149,8 +149,7 @@ class Message(object):
         elif self.type_ == MESSAGE_SERIAL_NUMBER:
             msg = SerialNumberMessage()
         else:
-            raise MessageError('Could not find message handler ' \
-                               '(unknown message type).')
+            raise MessageError('Could not find message handler '+'(unknown message type).')
 
         msg.setPayload(self.getPayload())
         return msg
@@ -166,8 +165,7 @@ class ChannelMessage(Message):
 
     def setChannelNumber(self, number):
         if (number > 0xFF) or (number < 0x00):
-            raise MessageError('Could not set channel number ' \
-                                   '(out of range).')
+            raise MessageError('Could not set channel number ' + '(out of range).')
 
         self.payload[0] = chr(number)
 
